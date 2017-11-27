@@ -61,6 +61,10 @@ perl  -0777 -i -pe 's/(echo sprintf\( \x27<p class=\"alignright\".*\);)/\/* NL_C
 ProgressBar 87 100 "Hiding unwanted links"
 perl -0777 -i -pe 's/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/\x27 \); \?>//g' $DIRECTORY/includes/integrations/views/integration-settings.php
 perl -0777 -i -pe 's/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/#utm_source=wp-plugin&utm_medium=newsletter-for-wp&utm_campaign=settings-page\x27 \); \?>//g' $DIRECTORY/includes/forms/views/tabs/form-settings.php
+
+perl -0777 -i -pe 's/(\$links\[\] = \x27<a href=\"https:\/\/kb.mc4wp.com\/#utm_source=wp-plugin&utm_medium=newsletter-for-wp&utm_campaign=plugins-page\">\x27\. __\( \x27Documentation\x27, \x27newsletter-for-wp\x27 \) \. \x27</a>\x27;)/\/\/ $1/g' $DIRECTORY/includes/admin/class-admin-texts.php
+
+
 # Mette a posto copyright e readme
 ProgressBar 87 100 "Adding Copyrights"
 perl -0777 -i -pe 's/<\?php[\s\S]*This program is free software:/<\?php\n\/\*\nPlugin Name: Newsletter for WordPress\nPlugin URI: https:\/\/github\.com\/mailrouter\/Newsletter-for-Wordpress\nDescription: Newsletter for WordPress by mailrouter. Aggiunge vari metodi di iscrizione newsletter al tuo sito.\nVersion: \[nl4wp_version\]\nAuthor: mailrouter\nText Domain: newsletter-for-wp\nDomain Path: \/languages\nLicense: GPL v3\n\nNewsletter for WordPress\nCopyright (C) 2017, Void Labs snc, info@voidlabs.it\nforked from\nMailchimp for WordPress\nCopyright (C) 2012-2017, Danny van Kooten, hi@dannyvankooten.com\n\nintegrates\nPlugin Update Checker Library 4.3\nhttp:\/\/w-shadow\.com\/\nCopyright 2017 Janis Elsts\nReleased under the MIT license. See license.txt for details.\n\nThis program is free software:/g' $DIRECTORY/newsletter-for-wp.php
