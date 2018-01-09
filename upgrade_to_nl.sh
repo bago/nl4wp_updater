@@ -109,28 +109,28 @@ perl -0777 -ne '/\[nl4wp_version\]/ && print "\n--> Matched 14: Version in \/rea
 perl -0777 -i -pe 's/\[nl4wp_version\]/'"$VERSION"'/g' $DIRECTORY/readme.txt
 cat $DIRECTORY/CHANGELOG.md >> $DIRECTORY/readme.txt
 
-# Sistema un paio di "bug" nel dominio delle traduzioni e qualche localizzazione mancante
-perl -0777 -ne '/nl4wp-ecommerce/ && print "\n--> Matched 15: Bug localizzazione in \/includes\/views\/other-settings.php"' $DIRECTORY/includes/views/other-settings.php
-perl -0777 -i -pe 's/nl4wp-ecommerce/newsletter-for-wp/g' $DIRECTORY/includes/views/other-settings.php
-perl -0777 -ne '/echo \$integration->description;/ && print "\n--> Matched 16: Bug localizzazione in \/includes\/integrations\/views\/integrations.php"' $DIRECTORY/includes/integrations/views/integrations.php
-perl -0777 -i -pe 's/echo \$integration->description;/_e\(\$integration->description, \x27newsletter-for-wp\x27\);/g' $DIRECTORY/includes/integrations/views/integrations.php
-perl -0777 -ne '/echo \$integration->description;/ && print "\n--> Matched 17: Bug localizzazione in \/includes\/integrations\/views\/integration-settings.php"' $DIRECTORY/includes/integrations/views/integration-settings.php
-perl -0777 -i -pe 's/echo \$integration->description;/_e\(\$integration->description, \x27newsletter-for-wp\x27\);/g' $DIRECTORY/includes/integrations/views/integration-settings.php
+# Sistema un paio di "bug" nel dominio delle traduzioni e qualche localizzazione mancante -> Non più necessario dalla 4.1.14
+# perl -0777 -ne '/nl4wp-ecommerce/ && print "\n--> Matched 15: Bug localizzazione in \/includes\/views\/other-settings.php"' $DIRECTORY/includes/views/other-settings.php
+# perl -0777 -i -pe 's/nl4wp-ecommerce/newsletter-for-wp/g' $DIRECTORY/includes/views/other-settings.php
+# perl -0777 -ne '/echo \$integration->description;/ && print "\n--> Matched 16: Bug localizzazione in \/includes\/integrations\/views\/integrations.php"' $DIRECTORY/includes/integrations/views/integrations.php
+# perl -0777 -i -pe 's/echo \$integration->description;/_e\(\$integration->description, \x27newsletter-for-wp\x27\);/g' $DIRECTORY/includes/integrations/views/integrations.php
+# perl -0777 -ne '/echo \$integration->description;/ && print "\n--> Matched 17: Bug localizzazione in \/includes\/integrations\/views\/integration-settings.php"' $DIRECTORY/includes/integrations/views/integration-settings.php
+# perl -0777 -i -pe 's/echo \$integration->description;/_e\(\$integration->description, \x27newsletter-for-wp\x27\);/g' $DIRECTORY/includes/integrations/views/integration-settings.php
 
-perl -0777 -ne '/<h3>Merge Fields<\/h3>/ && print "\n--> Matched 18: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<h3>Merge Fields<\/h3>/<h3><\?php _e\(\x27Merge Fields\x27, \x27newsletter-for-wp\x27\);\?><\/h3>/g' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -ne '/<th>Name<\/th>/ && print "\n--> Matched 19: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<th>Name<\/th>/<th><\?php _e\(\x27Name\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -ne '/<th>Tag<\/th>/ && print "\n--> Matched 20: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<th>Tag<\/th>/<th><\?php _e\(\x27Tag\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -ne '/<th>Type<\/th>/ && print "\n--> Matched 21: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<th>Type<\/th>/<th><\?php _e\(\x27Type\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -ne '/<th>Interests<\/th>/ && print "\n--> Matched 22: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<th>Interests<\/th>/<th><\?php _e\(\x27Interests\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -ne '/<h3>Interest Categories<\/h3>/ && print "\n--> Matched 23: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<h3>Interest Categories<\/h3>/<h3><\?php _e\(\x27Interest Categories\x27, \x27newsletter-for-wp\x27\);\?><\/h3>/g' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -ne '/<strong style=\"display: block; border-bottom: 1px solid #eee;\">Name<\/strong>/ && print "\n--> Matched 24: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
-perl -0777 -i -pe 's/<strong style=\"display: block; border-bottom: 1px solid #eee;\">Name<\/strong>/<strong style=\"display: block; border-bottom: 1px solid #eee;\"><\?php _e\(\x27Name\x27, \x27newsletter-for-wp\x27\);\?><\/strong>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<h3>Merge Fields<\/h3>/ && print "\n--> Matched 18: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<h3>Merge Fields<\/h3>/<h3><\?php _e\(\x27Merge Fields\x27, \x27newsletter-for-wp\x27\);\?><\/h3>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<th>Name<\/th>/ && print "\n--> Matched 19: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<th>Name<\/th>/<th><\?php _e\(\x27Name\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<th>Tag<\/th>/ && print "\n--> Matched 20: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<th>Tag<\/th>/<th><\?php _e\(\x27Tag\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<th>Type<\/th>/ && print "\n--> Matched 21: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<th>Type<\/th>/<th><\?php _e\(\x27Type\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<th>Interests<\/th>/ && print "\n--> Matched 22: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<th>Interests<\/th>/<th><\?php _e\(\x27Interests\x27, \x27newsletter-for-wp\x27\);\?><\/th>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<h3>Interest Categories<\/h3>/ && print "\n--> Matched 23: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<h3>Interest Categories<\/h3>/<h3><\?php _e\(\x27Interest Categories\x27, \x27newsletter-for-wp\x27\);\?><\/h3>/g' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -ne '/<strong style=\"display: block; border-bottom: 1px solid #eee;\">Name<\/strong>/ && print "\n--> Matched 24: Bug localizzazione in \/includes\/views\/parts\/lists-overview.php"' $DIRECTORY/includes/views/parts/lists-overview.php
+# perl -0777 -i -pe 's/<strong style=\"display: block; border-bottom: 1px solid #eee;\">Name<\/strong>/<strong style=\"display: block; border-bottom: 1px solid #eee;\"><\?php _e\(\x27Name\x27, \x27newsletter-for-wp\x27\);\?><\/strong>/g' $DIRECTORY/includes/views/parts/lists-overview.php
 
 # cambia gli hash del composer
 HASH_a=$(grep ".*ComposerAutoloaderInit\(.*\)::getLoader.*" $DIRECTORY/vendor/autoload_52.php | sed -e "s/.*ComposerAutoloaderInit\(.*\)::getLoader.*/\1/" )
@@ -155,5 +155,5 @@ REPOSITORY="https:\/\/github.com\/mailrouter\/Newsletter-for-Wordpress\/"
 perl  -0777 -i -pe 's/(\/\/ Prevent direct file access\ndefined\( \x27ABSPATH\x27 \) or exit;)/\/* PLUGIN AUTOUPDATE *\/\nrequire \x27plugin-update-checker\/plugin-update-checker.php\x27;\n\$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker\(\n\t\x27'"$REPOSITORY"'\x27,\n\t__FILE__,\n\t\x27newsletter-for-wp\x27\n);\n\/* end *\/\n$1/g' $DIRECTORY/newsletter-for-wp.php
 
 # Tutto a posto!
-ProgressBar 100 100 "DONE!! (Controlla che le sostituzioni siano 24 come previsto!)" 
+ProgressBar 100 100 "DONE!! (Controlla che le sostituzioni siano 14 come previsto!)" 
 printf "\n\n";
