@@ -16,7 +16,7 @@ Newsletter for WordPress, usa il tuo sito Wordpress per raccogliere iscritti per
 
 *Aggiungere metodi di iscrizione alla tua lista iscritti dovrebbe essere semplice e immediato. Ora lo è.*
 
-Newsletter for WordPress ti aiuta a aumentare il numero degli iscritti alla tua newsletter, integrandosi alla perfezione con l'account del tuo ESP (VOXmail, Mailrouter, Mymailer). Potrai creare moduli di ogni tipo, oppure integrare l'iscrizione direttamente nei commenti di Wordpress, nel form di registrazione, oppure integrare l'iscrizione con Woocommerce, Ninja Forms e tanti altri plugin.
+Newsletter for WordPress ti aiuta a aumentare il numero degli iscritti alla tua newsletter, integrandosi alla perfezione con l'account del tuo ESP. Potrai creare moduli di ogni tipo, oppure integrare l'iscrizione direttamente nei commenti di Wordpress, nel form di registrazione, oppure integrare l'iscrizione con Woocommerce, Ninja Forms e tanti altri plugin.
 
 #### Alcune delle caratteristiche di Newsletter for Wordpress
 
@@ -43,7 +43,6 @@ L'ESP, acronimo di Email Service Provider. E' una società che gestisce campagne
 Gli ESP sono nati come risposta alla difficoltà di invio email a grandi numeri di destinatari. Tale gestione include infatti la semplificazione di importazione/esportazione degli iscritti, la fornitura di procedure semplici di iscrizione e disiscrizione, la gestione del contatto con gli inbox providers (Feedback Loop, Whitelist), il monitoring delle blacklist, l'analisi del Bounce, l'integrazione di tecniche di autenticazione della posta elettronica. 
 Newsletter for Worpress facilita l'implementazione della procedura di iscrizione degli utenti, collegandosi direttamente al tuo account presso l'ESP, consentendo una integrazione completa fra ESP e sito Wordpress.
 
-Attualmente gli ESP compatibili con Newsletter for Wordpress sono: VOXmail, Mailrouter e Mymailer.
 
 == Installation ==
 
