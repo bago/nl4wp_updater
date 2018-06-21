@@ -47,6 +47,13 @@ grep --binary-file=without-match -rl nl4wp.com $DIRECTORY | xargs sed -i '' 's/n
 ProgressBar 40 100 "Renaming MailChimp -> Newsletter"
 find $DIRECTORY/ -iname "*mailchimp*" | sed -e "p;s/mailchimp/newsletter/" | xargs -n2 mv
 
+
+
+# Cambio del metodo di encoding con cui viene passata l'email, soprattutto per la disiscrizione
+ProgressBar 45 100 "Change encoding of email"
+perl -0777 -ne '/return md5\( strtolower\( trim\( \$email_address \) \) \);/ && print "\n--> Matched 01: Richiesta recensione in \/includes\/admin\/class-review-notice.php"' $DIRECTORY/includes/api/class-api-v3.php
+perl -0777 -i -pe 's/return md5\( strtolower\( trim\( \$email_address \) \) \);/return base64_encode\( strtolower\( trim\( \$email_address \) \) \);/g' $DIRECTORY/includes/api/class-api-v3.php
+
 # Aggiunta di un return false; alla funzione show di /includes/admin/class-review-notice.php // evita di mostrare la richiesta di recensione
 ProgressBar 50 100 "Hiding unwanted texts"
 perl -0777 -ne '/public function show\(\) \{/ && print "\n--> Matched 01: Richiesta recensione in \/includes\/admin\/class-review-notice.php"' $DIRECTORY/includes/admin/class-review-notice.php
@@ -87,8 +94,16 @@ perl  -0777 -i -pe 's/(echo sprintf\( \x27<p class=\"alignright\".*\);)/\/* NL_C
 
 # Elimina i link al knoledgebase di MC4WP
 ProgressBar 87 100 "Hiding unwanted links"
-perl -0777 -ne '/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/\x27 \); \?>/ && print "\n--> Matched 09: Knoledgebase in \/includes\/integrations\/views\/integration-settings.php"' $DIRECTORY/includes/integrations/views/integration-settings.php
-perl -0777 -i -pe 's/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/\x27 \); \?>//g' $DIRECTORY/includes/integrations/views/integration-settings.php
+
+
+#perl -0777 -ne '/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/\x27 \); \?>/ && print "\n--> Matched 09: Knoledgebase in \/includes\/integrations\/views\/integration-settings.php"' $DIRECTORY/includes/integrations/views/integration-settings.php
+
+perl -0777 -ne '/<\?php echo sprintf\( __\( \x27Please ensure you <a href=\"\%s\">configure the plugin to send all required fields<\/a> or <a href=\"\%s\">log into your Newsletter account<\/a> and make sure only the email \& name fields are marked as required fields for the selected list\(s\)\.\x27, \x27newsletter-for-wp\x27 \), \x27https:\/\/kb\.mc4wp\.com\/send-additional-fields-from-integrations\/#utm_source=wp-plugin\&utm_medium=newsletter-for-wp\&utm_campaign=integrations-page\x27, \x27https:\/\/admin\.newsletter\.com\/lists\/\x27 \); \?>/ && print "\n--> Matched 09: Knoledgebase in \/includes\/integrations\/views\/integration-settings.php"' $DIRECTORY/includes/integrations/views/integration-settings.php
+
+#perl -0777 -i -pe 's/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/\x27 \); \?>//g' $DIRECTORY/includes/integrations/views/integration-settings.php
+
+perl -0777 -i -pe 's/<\?php echo sprintf\( __\( \x27Please ensure you <a href=\"\%s\">configure the plugin to send all required fields<\/a> or <a href=\"\%s\">log into your Newsletter account<\/a> and make sure only the email \& name fields are marked as required fields for the selected list\(s\)\.\x27, \x27newsletter-for-wp\x27 \), \x27https:\/\/kb\.mc4wp\.com\/send-additional-fields-from-integrations\/#utm_source=wp-plugin\&utm_medium=newsletter-for-wp\&utm_campaign=integrations-page\x27, \x27https:\/\/admin\.newsletter\.com\/lists\/\x27 \); \?>//g' $DIRECTORY/includes/integrations/views/integration-settings.php
+
 
 perl -0777 -ne '/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/#utm_source=wp-plugin&utm_medium=newsletter-for-wp&utm_campaign=settings-page\x27 \); \?>/ && print "\n--> Matched 10: Knoledgebase in \/includes\/forms\/views\/tabs\/form-settings.php"' $DIRECTORY/includes/forms/views/tabs/form-settings.php
 perl -0777 -i -pe 's/<\?php printf\( \x27 <a href=\"\%s\" target=\"_blank\">\x27 \. __\( \x27What does this do\?\x27, \x27newsletter-for-wp\x27 \) \. \x27<\/a>\x27, \x27https:\/\/kb\.mc4wp\.com\/what-does-replace-groupings-mean\/#utm_source=wp-plugin&utm_medium=newsletter-for-wp&utm_campaign=settings-page\x27 \); \?>//g' $DIRECTORY/includes/forms/views/tabs/form-settings.php
