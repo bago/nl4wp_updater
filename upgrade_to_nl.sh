@@ -22,6 +22,7 @@ sleep 0.2;
 DIRECTORY="$1"
 VERSION="$2"
 WPVERSION="$3"
+SEDINPLACE="sed -i"
 
 # Renaming completo di tutti i riferimenti a Mailchimp nel codice. 
 # Mailchimp -> Newsletter
@@ -29,17 +30,17 @@ WPVERSION="$3"
 # MC4WP -> NL4WP
 # mc4wp -> nl4wp
 
-grep --binary-file=without-match -rl mailchimp $DIRECTORY | xargs sed -i '' 's/mailchimp/newsletter/g'
+grep --binary-file=without-match -rl mailchimp $DIRECTORY | xargs ${SEDINPLACE} 's/mailchimp/newsletter/g'
 ProgressBar 5 100 "Renaming MailChimp -> Newsletter"
-grep --binary-file=without-match -rl MailChimp $DIRECTORY | xargs sed -i '' 's/MailChimp/Newsletter/g'
+grep --binary-file=without-match -rl MailChimp $DIRECTORY | xargs ${SEDINPLACE} 's/MailChimp/Newsletter/g'
 ProgressBar 10 100 "Renaming MailChimp -> Newsletter"
-grep --binary-file=without-match -rl mc4wp $DIRECTORY | xargs sed -i '' 's/mc4wp/nl4wp/g'
+grep --binary-file=without-match -rl mc4wp $DIRECTORY | xargs ${SEDINPLACE} 's/mc4wp/nl4wp/g'
 ProgressBar 20 100 "Renaming MailChimp -> Newsletter"
-grep --binary-file=without-match -rl MC4WP $DIRECTORY | xargs sed -i '' 's/MC4WP/NL4WP/g'
+grep --binary-file=without-match -rl MC4WP $DIRECTORY | xargs ${SEDINPLACE} 's/MC4WP/NL4WP/g'
 
 # Al momento manteniamo i riferimenti al sito originale mc4wp.com
 ProgressBar 30 100 "Renaming MailChimp -> Newsletter"
-grep --binary-file=without-match -rl nl4wp.com $DIRECTORY | xargs sed -i '' 's/nl4wp.com/mc4wp.com/g'
+grep --binary-file=without-match -rl nl4wp.com $DIRECTORY | xargs ${SEDINPLACE} 's/nl4wp.com/mc4wp.com/g'
 
 # Renaming anche delle cartelle
 ProgressBar 40 100 "Renaming MailChimp -> Newsletter"
@@ -121,8 +122,8 @@ cat $DIRECTORY/CHANGELOG.md >> $DIRECTORY/readme.txt
 # cambia gli hash del composer
 HASH_a=$(grep ".*ComposerAutoloaderInit\(.*\)::getLoader.*" $DIRECTORY/vendor/autoload_52.php | sed -e "s/.*ComposerAutoloaderInit\(.*\)::getLoader.*/\1/" )
 HASH_b=$(grep ".*class ComposerAutoloaderInit\(.*\)" $DIRECTORY/vendor/composer/autoload_real.php | sed -e "s/.*class ComposerAutoloaderInit\(.*\)/\1/" )
-grep --binary-file=without-match -rl $HASH_a $DIRECTORY | xargs sed -i '' 's/'"$HASH_a"'/'"$HASH_a"'_nl/g'
-grep --binary-file=without-match -rl $HASH_b $DIRECTORY | xargs sed -i '' 's/'"$HASH_b"'/'"$HASH_b"'_nl/g'
+grep --binary-file=without-match -rl $HASH_a $DIRECTORY | xargs ${SEDINPLACE} 's/'"$HASH_a"'/'"$HASH_a"'_nl/g'
+grep --binary-file=without-match -rl $HASH_b $DIRECTORY | xargs ${SEDINPLACE} 's/'"$HASH_b"'/'"$HASH_b"'_nl/g'
 
 # Copia dei file di lingua in italiano 
 ProgressBar 90 100 "Copy Language and Api integration"
