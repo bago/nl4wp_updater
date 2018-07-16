@@ -1,5 +1,8 @@
 git clone git@github.com:bago/nl4wp_updater.git updater
 
+# verifica plugin update checker, ed eventuale update
+https://github.com/YahnisElsts/plugin-update-checker
+
 wget https://github.com/ibericode/mailchimp-for-wordpress/
 unzip di mailchimp-for-wordpress
 
@@ -51,4 +54,10 @@ mv ../nl4wp/.git .
 git commit -a -m "update to upstream 4.2.4"
 git push
 
+# Prova nuova versione su wordpress vero
+# Creazione release su github
+
+# TAG: vX.X.X
+# NAME: Versione X.X.X
+# CHANGES: ...
 
